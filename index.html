@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+    <audio id="sound"></audio>
     <div class="container">
         <div class="search-box">
             <input type="text" placeholder="Search for word..." id = "inp-word">
@@ -15,13 +16,23 @@
 
         </div>
 
-        <div class="result">
+        <div class="result" id="result">
             <div class="word">
                 <h1>Sample</h1>
                 <button>
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
             </div>
+            <div class="details">
+                <p>pos</p>
+                <p>/sample/</p>
+            </div>
+            <p class="word-meaning">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, iure.
+            </p>
+            <p class="word-example">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, repellendus!
+            </p>
         </div>
     </div>
     
