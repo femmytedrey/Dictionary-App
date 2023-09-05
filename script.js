@@ -14,7 +14,6 @@ btn.addEventListener('click', () => {
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
-        
         result.innerHTML = `
         <div class="word">
                 <h1>${inputWord}</h1>
@@ -24,7 +23,7 @@ btn.addEventListener('click', () => {
             </div>
             <div class="details">
                 <p>${data[0].meanings[0].partOfSpeech}</p>
-                <p>${data[0].phonetics[0]}</p>
+                <p>${data[0].phonetic[0].text}</p>
             </div>
             <p class="word-meaning">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, iure.
