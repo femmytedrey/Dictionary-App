@@ -17,7 +17,7 @@ btn.addEventListener('click', () => {
         result.innerHTML = `
         <div class="word">
                 <h1>${inputWord}</h1>
-                <button>
+                <button onclick = "playSound()">
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
             </div>
@@ -32,7 +32,13 @@ btn.addEventListener('click', () => {
                 ${data[0].meanings[0].definitions[0].example || ""}
             </p>`;
             sound.setAttribute("src", `https:${data[0].phonetics[0].audio}`);
-            console.log(sound);
-    });
+    })
+    .catch(() =>{
+        result.innerHTML = `<h3>Couldn't find work</h3>`
+    })
 
 });
+
+function playSound(){
+    sound.play();
+}
