@@ -8,7 +8,6 @@ btn.addEventListener('click', () => {
     if(inputWord === ""){
         alert("Input is required!");  
     }
-    
 
     fetch(`${url}${inputWord}`)
     .then((response) => response.json())
@@ -16,27 +15,31 @@ btn.addEventListener('click', () => {
         console.log(data);
         result.innerHTML = `
         <div class="word">
-                <h1>${inputWord}</h1>
-                <button onclick = "playSound()">
-                    <i class="fa-solid fa-volume-high"></i>
-                </button>
-            </div>
-            <div class="details">
-                <p>${data[0].meanings[0].partOfSpeech}</p>
-                <p>/${data[0].phonetic}/</p>
-            </div>
-            <p class="word-meaning">
-                ${data[0].meanings[0].definitions[0].definition}
-            </p>
-            <p class="word-example">
-                ${data[0].meanings[0].definitions[0].example || ""}
-            </p>`;
-            sound.setAttribute("src", `https:${data[0].phonetics[0].audio}`);
+            <h1>${inputWord}</h1>
+            <button onclick="playSound()">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+        </div>
+        <div class="details">
+            <p>${data[0].meanings[0].partOfSpeech}</p>
+            <p>${data[0].phonetic}</p>
+        </div>
+        <p class="word-meaning">
+            ${data[0].meanings[0].definitions[0].definition}
+        </p>
+        <p class="word-example">
+            ${data[0].meanings[0].definitions[0].example || ""}
+        </p>`;
+
+        // Set the source URL for the audio element
+        sound.setAttribute("src", `https://api.dictionaryapi.dev/media/pronunciations/en/${inputWord}-us.mp3`);
+        
+        sound.load();
+        // sound.play();
     })
     .catch(() =>{
-        result.innerHTML = `<h3>Couldn't find work</h3>`
-    })
-
+        result.innerHTML = `<h3 class = "error">Couldn't find word!</h3>`;
+    });
 });
 
 function playSound(){
