@@ -23,14 +23,16 @@ btn.addEventListener('click', () => {
             </div>
             <div class="details">
                 <p>${data[0].meanings[0].partOfSpeech}</p>
-                <p>${data[0].phonetic[0].text}</p>
+                <p>/${data[0].phonetic}/</p>
             </div>
             <p class="word-meaning">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, iure.
+                ${data[0].meanings[0].definitions[0].definition}
             </p>
             <p class="word-example">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, repellendus!
+                ${data[0].meanings[0].definitions[0].example || ""}
             </p>`;
+            sound.setAttribute("src", `https:${data[0].phonetics[0].audio}`);
+            console.log(sound);
     });
 
 });
